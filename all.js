@@ -41,16 +41,21 @@ const app = new Vue({
       },
     },
     created() {
-        // this
-        const vm = this
-        axios.get('https://raw.githubusercontent.com/hexschool/vue_onlineTalk/kh_tourism/complete/data.json')
-            .then((response) => {
-                vm.data = response.data.data
-                vm.getUniqueList() 
-            })
-        }
-    });
-        
+      const vm=this;
+    axios
+      .get("https://raw.githubusercontent.com/hexschool/KCGTravel/master/datastore_search.json")
+      .then(function (response) {
+        console.log(response);
+        console.log(vm);
+        vm.data=response.data.result.records;
+        console.log(vm.data);
+        vm.geyUniqueList();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
+});
   
     
         
