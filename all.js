@@ -1,3 +1,4 @@
+
 const app = new Vue({
     el: '#app',
     data: {
@@ -5,20 +6,10 @@ const app = new Vue({
       locations: [],
       currentPage: 0,
       currentLocation: '',
-      pages: 0,
-    },
-    methods: {
-      getUniqueList() {
-        const locations = new Set(); // 使用 ES6 中的 set() 取出唯一值
-        this.data.forEach((item, i) => {
-          locations.add(item.Zone)
-        })
-        this.locations = Array.from(locations);
-      }
+   
     },
     computed: {
       filterData() {
-        const newData = []
         const vm = this
         let items = []
         // 過濾地點
@@ -28,18 +19,31 @@ const app = new Vue({
           items = vm.data
         }
         // 分頁製作
-        items.forEach((item, i) => {
-          if (i % 10 === 0) {
-            newData.push([])
-          }
-          const page = parseInt(i / 10)
-          newData[page].push(item)
+        const newData=[];
+        console.log(vm.currentLocation)
+        items.forEach(function(item,i){
+            if(i % 10 === 0){
+                newData.push([])
+            }
+            const page=parseInt(i/10);
+            newData[page].push(item)
         })
-        vm.pages = newData.length // 分頁數量
-        vm.currentPage = 0
-        return newData
-      },
+        console.log(newData);
+        return newData;
+    }
     },
+    methods: {
+      geyUniqueList(){
+    
+          const vm=this;
+          const locations =new Set();//ES6 set讓資料不得重複
+          vm.data.forEach(function(item,i){
+              locations.add(item.Zone);
+          })
+          console.log(locations);
+          vm.locations=Array.from(locations);
+      }
+  },
     created() {
       const vm=this;
     axios
@@ -57,6 +61,4 @@ const app = new Vue({
   },
 });
   
-    
-        
-    
+  
