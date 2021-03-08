@@ -40,7 +40,7 @@
               <button class="btn btn-info px-4" @click="currentLocation='前鎮區'">前鎮區</button>
               <button class="btn btn-warning px-4" @click="currentLocation='仁武區'">仁武區</button>
               <button class="btn btn-primary px-4" @click="currentLocation='鼓山區'">鼓山區</button>
-              <button class="btn btn-danger px-4" @click="currentLocation='茂林區'">茂林區</button
+              <button class="btn btn-danger px-4" @click="currentLocation='茂林區'">茂林區</button>
             </div>
           </div>
         </div>
@@ -89,8 +89,8 @@
           <!-- <li class="page-item disabled">
             <a class="page-link" href="#" tabindex="-1">Previous</a>
           </li> -->
-          <li class="page-item" v-for="page in pages" :class="{active: currentPage === page - 1}">
-            <a class="page-link" href="#" @click.prevent="currentPage = (page - 1)">{{ page }}</a>
+          <li class="page-item" :class="{active:currentPage===page-1}" v-for="page in filterData.length">
+            <a class="page-link" href="#" @click.prevent="currentPage=page-1">{{page}}</a>
           </li>
           <!-- <li class="page-item">
             <a class="page-link" href="#">Next</a>
